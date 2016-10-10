@@ -99,3 +99,17 @@ protected void onCreate(Bundle savedInstanceState){
 ```
 ViewPager.setAdapter(PagerAdapter)
 ```
+
+
+###4 Analysing PagerAdapter Methods Using Logcat
+When app starts, it loads 2 views(current+next), when traverse into middle, it keeps 3 items, destroy (n-2) first, then add (n+1)  
+in CustomPagerAdapter.java
+```
+public void destroyItem(ViewGroup container, int position,Object object){
+  container.removeView(FrameLayout(object));
+}
+```
+
+
+
+###6 Implementing FragmentPagerAdapter

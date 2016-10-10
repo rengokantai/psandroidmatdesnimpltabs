@@ -56,7 +56,10 @@ class CustomPagerAdapter extends PagerAdapter{
   }
   
   @Override
-  public boolean isViewFromObject(View view, Object object){}
+  public boolean isViewFromObject(View view, Object object){
+    //return false;
+    return view==object
+  }
   
   
   @Override
@@ -68,7 +71,31 @@ class CustomPagerAdapter extends PagerAdapter{
     DataModel dataModel = itemList.get(position);
     imageView.setImageResource(dataModel.imageId);
     textView.setText(dataModel.title);
-    super.instantiateItem(container,position);
+    
+    container.addView(itemView);
+    return itemView;
+    //super.instantiateItem(container,position);
+  }
+  
+  @Override
+  public void destroyItem(ViewGroup container,int position,Object object){
+    
   }
 }
+```
+
+
+MainActivity.java
+```
+protected void onCreate(Bundle savedInstanceState){
+  List<DataModel> itemList = getDataList();
+  ViewPager viewPager = (ViewPager)findViewById(R.id.viewPager);
+  CustomPagerAdapter adapter = new CustomPagerAdapter(this,itemList);
+  viewPager.setAdapter(adapter);
+}
+```
+
+(Hence, the rule is)
+```
+ViewPager.setAdapter(PagerAdapter)
 ```

@@ -113,3 +113,42 @@ public void destroyItem(ViewGroup container, int position,Object object){
 
 
 ###6 Implementing FragmentPagerAdapter
+app/CustomAdapter.java
+```
+public class CustomAdapter extends FragmentPagerAdapter{
+
+  private final int ITEMS=6;
+  public CustomAdapter(FragmentManager fm){
+    super(fm);
+  }
+  
+  @Override
+  public int getCount(){
+    return ITEMS;
+  }
+  
+  @Override
+  public Fragment getItem(int position){
+    switch(position){
+      case 0:
+        return new FragmentOne();
+      ...
+      default:
+        rerurn new FragmentOne();
+    }
+  }
+}
+```
+
+MainActivity.java
+```
+public class MainActivity extends AppCompatActivity{
+public void onCreateVi
+  super.onCreate(savedInstanceState);
+  setContentView(R.layout.activity_main);
+  ViewPager viewPager = (ViewPager)findViewById(R.id.viewPager);
+  CustomAdapter adapter = new CustomAdapter(getSupportFragmentManager());
+  viewPager.setAdapter(adapter);
+}
+```
+

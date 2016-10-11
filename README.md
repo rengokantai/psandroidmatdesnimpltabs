@@ -166,6 +166,71 @@ public void destroyItem(ViewGroup container, int position,Object object){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+##4 Implementing Simple Material Tabs with TabLayout
+###2 Initial Project Setup
+activity_main.xml
+```
+<RelativeLayout ....
+<android.support.v7.widget.Toolbar android:id="@+id/toolbar" android:layout_width="match_parent" android:layout_height="?attr/actionBarSize" android:background="?attr/colorPrimary" android:layout_alignParentTop="true"/>
+
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="10dp" android:layout_centerInParent="true" android:orientation="vertical">
+
+<Button android:id="@+id/btnSimpleTabs"
+```
+
+
+res/values/styles.xml
+```
+<resources>
+<style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+<item name="colorPrimary">@color/colorPrimary</item>
+<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+<item name="colorAccent">@color/colorAccent</item>
+</style>
+</resources>
+```
+res/values/colors.xml
+```
+<?xml>
+<resources>
+<color name="colorPrimary">#aaa</color>
+<color name="colorPrimaryDark">#aaa</color>
+<color name="colorAccent">#aaa</color>
+</resources>
+```
+build.gradle
+```
+dependencies{
+  compile 'com.android.support.appcompat-v7:23.3.0'
+  compile 'com.android.support:design:23.3.0'
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##5 Implementing Scrollable and Custom Tabs
 ###2 Implementing Scrollable Tabs
 create ScrollTabsAdapter.java

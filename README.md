@@ -152,3 +152,78 @@ public void onCreateVi
 }
 ```
 
+###7 Analysing FragmentPagerAdapter in Detail
+CustomAdapter.java
+```
+@Override
+public void destroyItem(ViewGroup container, int position,Object object){
+  if(mTransaction==null){
+    mTransaction=mFragmanager.beginTransaction();
+  }
+  mTransaction.detach((Fragment)object);
+}
+```
+
+
+
+##5 Implementing Scrollable and Custom Tabs
+###2 Implementing Scrollable Tabs
+create ScrollTabsAdapter.java
+```
+public class ScrollTabsAdapter extends FragmentPagerAdapter{
+  private List<Fragment> fragmentList;
+  private List<String> titleList;
+  
+  public ScrollTabsAdapter(FragmentManger fm, List<Fragment> fragmentList, Lista<String> titleList){
+    super(fm);
+    this.fragmentList = fragmentList;
+    this.titleList=titleList;
+  }
+  
+  @Override
+  public int getCount(){
+    return fragmentList.size();
+  }
+  @Override
+  public Fragment getItem(int position){
+    return fragmentList.get(position);
+  }
+  
+  @Override
+  public CharSequence getPageTitle(int position){
+    return titleList.get(position);
+  }
+
+}
+```
+
+tabs/ScrollTabs
+```
+public class ScrollTabs extends AppCompatActivity{
+  private List<Fragment> fragmentList = new ArrayList<>();
+  private List<String> titleList = new ArrayList<>();
+  
+  private ViewPager viewPager;
+  private ScrollTabsAdapter adapter;
+  peivate TabLayout tabLayout;
+  
+  @Override
+  protected void onCreate(@Nullable Bundle savedInstanceState){
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_scroll_tabs);
+    
+    initialize();
+    prepareDataResource();
+    adapter = new ScrollTabsAdapter(getSupportFragmentManager(),fragmentList,titleList);
+    
+    viewPager.setAdapter(adapter);
+    tabLayout.setupWithViewPager(viewPager);
+  }
+  
+}
+```
+res/layout/scroll_tabs.xml
+```
+
+```
+(4:40)
